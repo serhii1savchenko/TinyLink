@@ -23,7 +23,7 @@ public class ShortServlet extends HttpServlet {
 		//PrintWriter writer = response.getWriter();
 		//writer.println("<h1>" + link + "</h1>");
 		//writer.close();
-		String shortedLink = link;
+		String shortedLink = utils.MD5.encode(link);
 		request.setAttribute("shortedLink", shortedLink);
 		getServletContext().getRequestDispatcher("/result.jsp").forward(request, response);
 	}

@@ -7,9 +7,10 @@
 <title>TinyLink</title>
 </head>
 <body>
-	<h1>Hello JSP and Servlet!</h1>
+	<h1>Hello!</h1>
 	<form action="shortServlet" method="post">
-    	Enter your link: <input type="text" name="link" size="20">
+    	Enter your link (starting from website name e.g. google.com/...) <br/>
+    	http(s)://<input type="text" name="link" size="20">
     <input type="submit" value="Shorter!" />
 </form>
 </body>
