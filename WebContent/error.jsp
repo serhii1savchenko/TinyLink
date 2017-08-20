@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>TinyLink</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>Here is your link: <a href="${pageContext.request.contextPath}/at/${shortedLink}"> ${domainUrl} ${pageContext.request.contextPath}/at/${shortedLink}</a> </h1>
-	<h2><a href="${pageContext.request.contextPath}">Home</a></h2>
+	${message}
 	<br/>
-	<h3>${info}</h3>
+	<h2><a href="${pageContext.request.contextPath}">Home</a></h2>
 </body>
 </html>
