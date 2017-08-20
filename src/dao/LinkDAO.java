@@ -5,15 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import models.Link;
+import model.Link;
 
 public class LinkDAO {
 
-	private static final String getByOriginalLink = "SELECT * FROM links WHERE original = ?";
-	private static final String getByShortLink = "SELECT * FROM links WHERE short = ?";
-	private static final String addLink = "INSERT INTO links (original, short) VALUES (?, ?)";
+	private static final String getByOriginalLink 		= "SELECT * FROM links WHERE original = ?";
+	private static final String getByShortLink 			= "SELECT * FROM links WHERE short = ?";
+	private static final String addLink 				= "INSERT INTO links (original, short) VALUES (?, ?)";
 
-	public boolean isOriginalLinkInDB (String original){
+	public static boolean isOriginalLinkInDB (String original){
 
 		Connection con = utils.DBConnection.getConnection();
 		PreparedStatement prepared_stmt;
@@ -24,14 +24,12 @@ public class LinkDAO {
 			prepared_stmt = con.prepareStatement(getByOriginalLink);
 			prepared_stmt.setString(1, original);
 			res = prepared_stmt.executeQuery();	 
-			prepared_stmt.close();
-			con.close();
 			if(res.next()){
-				res.close();
+				con.close();
 				return true;
 			}
 			else {
-				res.close();
+				con.close();
 				return false;
 			}
 		} catch (SQLException e) {
@@ -41,8 +39,8 @@ public class LinkDAO {
 		return true;
 	}
 
-	public boolean isShortLinkInDB(String shortLink){
-		
+	public static boolean isShortLinkInDB(String shortLink){
+
 		Connection con = utils.DBConnection.getConnection();
 		PreparedStatement prepared_stmt;
 
@@ -52,14 +50,12 @@ public class LinkDAO {
 			prepared_stmt = con.prepareStatement(getByShortLink);
 			prepared_stmt.setString(1, shortLink);
 			res = prepared_stmt.executeQuery();	 
-			prepared_stmt.close();
-			con.close();
 			if(res.next()){
-				res.close();
+				con.close();
 				return true;
 			}
 			else {
-				res.close();
+				con.close();
 				return false;
 			}
 		} catch (SQLException e) {
@@ -69,10 +65,36 @@ public class LinkDAO {
 		return false;
 	}
 
-	public Link getByShort(String shortLink){
-		
+	public static Link getByOriginal(String originalLink){
+
 		Link result = new Link();
-		
+
+		Connection con = utils.DBConnection.getConnection();
+		PreparedStatement prepared_stmt;
+
+		ResultSet res = null;
+
+		try {
+			prepared_stmt = con.prepareStatement(getByOriginalLink);
+			prepared_stmt.setString(1, originalLink);
+			res = prepared_stmt.executeQuery();	 
+			if (res.next()) {
+				result.setId(res.getInt("id"));
+				result.setOriginalLink(res.getString("original"));
+				result.setShortLink(res.getString("short"));
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	public static Link getByShort(String shortLink){
+
+		Link result = new Link();
+
 		Connection con = utils.DBConnection.getConnection();
 		PreparedStatement prepared_stmt;
 
@@ -82,22 +104,20 @@ public class LinkDAO {
 			prepared_stmt = con.prepareStatement(getByShortLink);
 			prepared_stmt.setString(1, shortLink);
 			res = prepared_stmt.executeQuery();	 
-			prepared_stmt.close();
-			con.close();
 			if (res.next()) {
 				result.setId(res.getInt("id"));
 				result.setOriginalLink(res.getString("original"));
 				result.setShortLink(res.getString("short"));
-	        }
-			res.close();
+			}
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
-	public void add(Link link){
+	public static void add(Link link){
 
 		Connection con = utils.DBConnection.getConnection();
 		PreparedStatement prepared_stmt;
@@ -115,5 +135,5 @@ public class LinkDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

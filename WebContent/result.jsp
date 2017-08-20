@@ -7,6 +7,7 @@
 <title>TinyLink</title>
 </head>
 <body>
-	<h1>${shortedLink}</h1>
+	<h1>Here is your link: <a href="${pageContext.request.contextPath}/at/${shortedLink}">keks</a> </h1>
+	<h3>${info}</h3>
 </body>
 </html>
