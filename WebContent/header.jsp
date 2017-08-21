@@ -15,5 +15,5 @@
 </head>
 <body>
 	<center>
-		<a href="${pageContext.request.contextPath}"><img src = "${pageContext.request.contextPath}/resources/images/topImage.png" style="padding: 20px;"/></a>
+		<a href="<c:url value=""/>"><img src = "${pageContext.request.contextPath}/resources/images/topImage.png" style="padding: 20px;"/></a>
 	</center>
