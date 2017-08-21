@@ -12,7 +12,7 @@
 						<div style="padding-top: 5px; padding-down: 5px;"><button class="js-textareacopybtn btn btn-default">Copy</button></div>
 						<br/>
 						<p>Click the button to copy it to clipboard.</p>
-						-----------------------------------------
+						---------------------------------
 						<br/>
 						${info}
 						
