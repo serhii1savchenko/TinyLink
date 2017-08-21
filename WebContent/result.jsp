@@ -8,7 +8,7 @@
 					<div class="wrapper">
 						
 						<h3>Here is your link: </h3>
-						<a href="${pageContext.request.contextPath}/at/${shortedLink}"> <textarea class="js-copytextarea form-control" rows="2" readonly>${domainUrl}${pageContext.request.contextPath}/at/${shortedLink}</textarea></a>
+						<a href="${pageContext.request.contextPath}/at/${shortedLink}"> <textarea class="js-copytextarea form-control" rows="2" readonly>${pageContext.request.contextPath}/at/${shortedLink}</textarea></a>
 						<div style="padding-top: 5px; padding-down: 5px;"><button class="js-textareacopybtn btn btn-default">Copy</button></div>
 						<br/>
 						<p>Click the button to copy it to clipboard.</p>
