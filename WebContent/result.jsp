@@ -1,15 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>TinyLink</title>
-</head>
-<body>
-	<h1>Here is your link: <a href="${pageContext.request.contextPath}/at/${shortedLink}"> ${domainUrl} ${pageContext.request.contextPath}/at/${shortedLink}</a> </h1>
-	<h2><a href="${pageContext.request.contextPath}">Home</a></h2>
-	<br/>
-	<h3>${info}</h3>
-</body>
-</html>
+<%@include file="header.jsp" %>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="wrapper">
+						
+						<h3>Here is your link: </h3>
+						<a href="${pageContext.request.contextPath}/at/${shortedLink}"> <textarea class="js-copytextarea form-control" rows="2" readonly>${domainUrl}${pageContext.request.contextPath}/at/${shortedLink}</textarea></a>
+						<div style="padding-top: 5px; padding-down: 5px;"><button class="js-textareacopybtn btn btn-default">Copy</button></div>
+						<br/>
+						<p>Click the button to copy it to clipboard.</p>
+						${info}
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	<script type="text/javascript">
+	var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
+	copyTextareaBtn.addEventListener('click', function(event) {
+	  var copyTextarea = document.querySelector('.js-copytextarea');
+	  copyTextarea.select();
+	  try {
+	    var successful = document.execCommand('copy');
+	    var msg = successful ? 'successful' : 'unsuccessful';
+	    console.log('Copying text command was ' + msg);
+	  } catch (err) {
+	    console.log('Oops, unable to copy');
+	  }
+	});
+	</script>
+	
+<%@include file="footer.jsp" %>

@@ -7,9 +7,9 @@ import java.util.Properties;
 
 public class DBConnection {
 
-	private static final String url = "jdbc:mysql://server:port/name";
-    private static final String user = "user";
-    private static final String password = "password";
+    private static final String url = "jdbc:mysql://mysql5.gear.host/links";
+    private static final String user = "links";
+    private static final String password = "Jb46pWKB2~?M";
     private static Connection con = null;
     private static Properties properties = new Properties();
 
