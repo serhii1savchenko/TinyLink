@@ -26,7 +26,7 @@ public class LinksHandler extends HttpServlet {
 		Link res = dao.LinkDAO.getByShort(shortLink);
 		
 		if(res.getShortLink()==null){
-			request.setAttribute("message", "Something went wrong...");
+			request.setAttribute("message", "No such link yet.");
 			getServletContext().getRequestDispatcher("/error.jsp").forward(request, response);
 		}else{
 			request.setAttribute("url", res.getOriginalLink());
