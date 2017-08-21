@@ -67,7 +67,11 @@ public class ShortServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
-
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+	}
+	
 	private String slice7(String original) {
 		return original.substring(0, 7);
 	}
