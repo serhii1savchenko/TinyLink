@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="context" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
@@ -15,6 +16,8 @@
 	<script src="${pageContext.request.contextPath}/resources/bootstrap.min.js"></script>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico" />
+	<!-- root path -->
+	<script type="text/javascript"> var context = '${pageContext.request.contextPath}';</script>
 </head>
 <body>
 	<center>
