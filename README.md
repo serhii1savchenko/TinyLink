@@ -1,6 +1,6 @@
 # TinyLink
 
-simple url shortener 
+simple url shortener
 (JEE)
 
 https://morning-peak-22507.herokuapp.com/
