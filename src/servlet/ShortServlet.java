@@ -47,7 +47,7 @@ public class ShortServlet extends HttpServlet {
 				request.setAttribute("info", "We already have such link!");
 				getServletContext().getRequestDispatcher("/result.jsp").forward(request, response);
 			}else{
-				String shortened = slice7(utils.MD5.encode(original));
+				String shortened = sliceN(utils.MD5.encode(original), 7);
 				if(dao.LinkDAO.isShortLinkInDB(shortened)){
 					request.setAttribute("message", "MD5 hash collision error!");
 					getServletContext().getRequestDispatcher("/error.jsp").forward(request, response);
@@ -58,7 +58,7 @@ public class ShortServlet extends HttpServlet {
 					dao.LinkDAO.add(newLink);
 					request.setAttribute("domainUrl", domainUrl);
 					request.setAttribute("shortedLink", shortened);
-					request.setAttribute("info", "Everything is just great!");
+					request.setAttribute("info", "Everything is good!");
 					getServletContext().getRequestDispatcher("/result.jsp").forward(request, response);
 				}
 			}
@@ -72,8 +72,8 @@ public class ShortServlet extends HttpServlet {
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 	
-	private String slice7(String original) {
-		return original.substring(0, 7);
+	private String sliceN(String original, int n) {
+		return original.substring(0, n);
 	}
 
 }

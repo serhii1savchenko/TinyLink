@@ -8,11 +8,14 @@
 					<div class="wrapper">
 						
 						<h3>Here is your link: </h3>
-						<a href="${pageContext.request.contextPath}/at/${shortedLink}"> <textarea class="js-copytextarea form-control" rows="1" readonly>https://morning-peak-22507.herokuapp.com/at/${shortedLink}</textarea></a>
+						<a href="" id="ref"> <textarea id="area" class="js-copytextarea form-control" rows="1" readonly></textarea></a>
 						<div style="padding-top: 5px; padding-down: 5px;"><button class="js-textareacopybtn btn btn-default">Copy</button></div>
 						<br/>
 						<p>Click the button to copy it to clipboard.</p>
 						---------------------------------
+						
+						<!-- <script type="text/javascript">document.write(domainURL)</script>  -->
+						
 						<br/>
 						${info}
 						
@@ -36,6 +39,10 @@
 	    console.log('Oops, unable to copy');
 	  }
 	});
+	
+	document.getElementById("ref").href = domainURL + "at/" + '${shortedLink}';
+	
+	document.getElementById('area').innerHTML = domainURL + "at/" + '${shortedLink}';
 	</script>
 	
 <%@include file="footer.jsp" %>

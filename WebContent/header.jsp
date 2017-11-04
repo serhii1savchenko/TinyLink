@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="context" value="${pageContext.request.contextPath}" />
+<!-- c:set var="context" value="${pageContext.request.contextPath}" />  -->
 
 <html>
 <head>
@@ -17,9 +17,12 @@
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico" />
 	<!-- root path -->
-	<script type="text/javascript"> var context = '${pageContext.request.contextPath}';</script>
+	<script type="text/javascript"> var domainURL = window.location.protocol + "//"  + window.location.host + /* "" + window.location.pathname; */ "/"; </script>
 </head>
 <body>
 	<center>
-		<a href="<c:url value=""/>"><img src = "${pageContext.request.contextPath}/resources/images/topImage.png" style="padding: 20px;"/></a>
+		<a href="" id="home"><img src = "${pageContext.request.contextPath}/resources/images/topImage.png" style="padding: 20px;"/></a>
+		<script type="text/javascript">
+			document.getElementById("ref").href = domainURL;
+		</script>
 	</center>
