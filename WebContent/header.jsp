@@ -23,6 +23,6 @@
 	<center>
 		<a href="" id="home"><img src = "${pageContext.request.contextPath}/resources/images/topImage.png" style="padding: 20px;"/></a>
 		<script type="text/javascript">
-			document.getElementById("ref").href = domainURL;
+			document.getElementById("home").href = domainURL;
 		</script>
 	</center>
