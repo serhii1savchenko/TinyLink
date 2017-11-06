@@ -8,6 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TinyLink</title>
+<meta name="description" content="TinyLink is a simple and quick URL shortener" />
+<meta name="keywords" content="URL shortener, TinyLink, Tiny Link, short link" />
 	<!-- jQuery -->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery-3.2.0.min.js"/></script>
 	<!-- Bootstrap -->
