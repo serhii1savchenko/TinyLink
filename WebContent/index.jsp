@@ -8,6 +8,8 @@
 					<div class="wrapper">
 
 						<h2>Hello!</h2>
+						<p>TinyLink is a fast and simple URL shortener</p>
+						<p>It allows to turn awful large links into pretty short ones</p>
 						<form action="short" method="post">
     						Enter your link (starting from http(s)://...) <br/>
     						<input type="text" class="form-control" name="link" placeholder="https://google.com/...">
@@ -16,10 +18,16 @@
 						<center>
 							<img src = "${pageContext.request.contextPath}/resources/images/loading.gif" id="img" style="display:none"/>
 						</center>
-	
+						
 					</div>
 				</div>
 			</div>
+			<center>
+			<p>Here are last generated short links</p>
+				<c:forEach var="link" items="${lastLinks}">
+					<a href="${link.shortLink}" class="ref"> <div class="area">${link.shortLink}</div></a>
+				</c:forEach>
+			</center>
 		</div>
 	</div>
 </div>
@@ -28,6 +36,18 @@
     	function loading(){
     		document.getElementById("img").style.display = '';
     	}
+    	
+    	
+    	var areas = document.getElementsByClassName("area");
+    	for(var i=0; i<areas.length; i++) {
+    		areas[i].innerHTML = domainURL + "at/" + areas[i].innerHTML;
+    	}
+    	
+    	var refs = document.getElementsByClassName("ref");
+    	for(var i=0; i<refs.length; i++) {
+    		refs[i].href = areas[i].innerHTML;
+    	}
+    	
     </script>
 
 <%@include file="footer.jsp" %>

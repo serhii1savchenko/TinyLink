@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.Link;
 
@@ -12,6 +13,9 @@ public class LinkDAO {
 	private static final String getByOriginalLink 		= "SELECT * FROM links WHERE original = ?";
 	private static final String getByShortLink 			= "SELECT * FROM links WHERE short = ?";
 	private static final String addLink 				= "INSERT INTO links (original, short) VALUES (?, ?)";
+	private static final String getLastN 				= "SELECT * "
+														+ "FROM (SELECT * FROM links ORDER BY id DESC LIMIT ?) "
+															+ "sub ORDER BY id DESC";
 
 	public static boolean isOriginalLinkInDB (String original){
 
@@ -134,6 +138,34 @@ public class LinkDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static ArrayList<Link> getLastN(int N){
+
+		ArrayList<Link> lastLinks = new ArrayList<Link>(N);
+
+		Connection con = utils.DBConnection.getConnection();
+		PreparedStatement prepared_stmt;
+
+		ResultSet res = null;
+
+		try {
+			prepared_stmt = con.prepareStatement(getLastN);
+			prepared_stmt.setInt(1, N);
+			res = prepared_stmt.executeQuery();	 
+			while (res.next()) {
+				Link tmp = new Link();
+				tmp.setId(res.getInt("id"));
+				tmp.setOriginalLink(res.getString("original"));
+				tmp.setShortLink(res.getString("short"));
+				lastLinks.add(tmp);
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lastLinks;
 	}
 
 }

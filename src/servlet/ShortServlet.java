@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,19 +31,13 @@ public class ShortServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		Connection con = utils.DBConnection.getConnection();
 		
-		if (con != null){
+		String original = request.getParameter("link");
+		
+		if ((con != null)&&!(original.isEmpty())){
 			try { con.close(); } catch (SQLException e) { e.printStackTrace(); }
 			
-			String [] parts = request.getRequestURL().toString().split("/");
-			String domainUrl = parts[0];
-			for (int i=1; i<parts.length-2;i++){
-				domainUrl = domainUrl.concat("/").concat(parts[i]);
-			}
-			
-			String original = request.getParameter("link");
 			if(dao.LinkDAO.isOriginalLinkInDB(original)){
 				Link tmp = dao.LinkDAO.getByOriginal(original);
-				request.setAttribute("domainUrl", domainUrl);
 				request.setAttribute("shortedLink", tmp.getShortLink());
 				request.setAttribute("info", "We already have such link!");
 				getServletContext().getRequestDispatcher("/result.jsp").forward(request, response);
@@ -56,19 +51,21 @@ public class ShortServlet extends HttpServlet {
 					newLink.setOriginalLink(original);
 					newLink.setShortLink(shortened);
 					dao.LinkDAO.add(newLink);
-					request.setAttribute("domainUrl", domainUrl);
 					request.setAttribute("shortedLink", shortened);
 					request.setAttribute("info", "Everything is good!");
 					getServletContext().getRequestDispatcher("/result.jsp").forward(request, response);
 				}
 			}
 		}else{
-			request.setAttribute("message", "DB connection error...");
+			request.setAttribute("message", "DB connection error occurred or you have entered an empty string...");
 			getServletContext().getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<Link> lastLinks = dao.LinkDAO.getLastN(5);
+		request.setAttribute("lastLinks", lastLinks);
+		System.out.println(lastLinks.size());
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 	

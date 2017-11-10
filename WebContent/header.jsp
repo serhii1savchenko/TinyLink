@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- c:set var="context" value="${pageContext.request.contextPath}" />  -->
 
-<html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TinyLink</title>
@@ -16,6 +16,10 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap-theme.min.css"> 
 	<script src="${pageContext.request.contextPath}/resources/bootstrap.min.js"></script>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!-- Social Buttons for Bootstrap -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap-social-gh-pages/bootstrap-social.css">
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico" />
 	<!-- root path -->
