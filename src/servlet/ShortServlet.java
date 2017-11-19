@@ -32,6 +32,13 @@ public class ShortServlet extends HttpServlet {
 		Connection con = utils.DBConnection.getConnection();
 		
 		String original = request.getParameter("link");
+		byte isPrivate = 1;
+		try{
+			System.out.println(request.getParameterValues("isPrivate")[0]);
+		}catch(NullPointerException e){
+			isPrivate = 0;
+		}
+		
 		
 		if ((con != null)&&!(original.isEmpty())){
 			try { con.close(); } catch (SQLException e) { e.printStackTrace(); }
@@ -50,9 +57,10 @@ public class ShortServlet extends HttpServlet {
 					Link newLink = new Link();
 					newLink.setOriginalLink(original);
 					newLink.setShortLink(shortened);
+					newLink.setIsPrivate(isPrivate);
 					dao.LinkDAO.add(newLink);
 					request.setAttribute("shortedLink", shortened);
-					request.setAttribute("info", "Everything is good!");
+					request.setAttribute("info", "Everything is fine!");
 					getServletContext().getRequestDispatcher("/result.jsp").forward(request, response);
 				}
 			}

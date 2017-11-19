@@ -13,6 +13,7 @@
 						<form action="short" method="post">
     						Enter your link (starting from http(s)://...) <br/>
     						<input type="text" class="form-control" name="link" placeholder="https://google.com/...">
+    						<div style="padding-top: 5px;"><div class="checkbox"><label><input type="checkbox" value="" name="isPrivate" checked>Don't display my link in the list below</label></div></div>
     						<div style="padding-top: 5px;"><input type="submit" class="btn btn-default" value="Shorten!" onclick="loading();"/></div>
 						</form>
 						<center>
@@ -22,6 +23,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<center>
 			<p>Here are last generated short links</p>
 				<c:forEach var="link" items="${lastLinks}">

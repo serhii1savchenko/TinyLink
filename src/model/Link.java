@@ -5,6 +5,7 @@ public class Link {
 	private int id;
 	private String originalLink;
 	private String shortLink;
+	private byte isPrivate;
 	
 	public Link(){
 	}
@@ -28,6 +29,13 @@ public class Link {
 	}
 	public void setShortLink(String shortLink) {
 		this.shortLink = shortLink;
+	}
+	
+	public byte getIsPrivate() {
+		return isPrivate;
+	}
+	public void setIsPrivate(byte isPrivate) {
+		this.isPrivate = isPrivate;
 	}
 		
 }

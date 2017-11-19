@@ -12,10 +12,10 @@ public class LinkDAO {
 
 	private static final String getByOriginalLink 		= "SELECT * FROM links WHERE original = ?";
 	private static final String getByShortLink 			= "SELECT * FROM links WHERE short = ?";
-	private static final String addLink 				= "INSERT INTO links (original, short) VALUES (?, ?)";
+	private static final String addLink 				= "INSERT INTO links (original, short, prvt) VALUES (?, ?, ?)";
 	private static final String getLastN 				= "SELECT * "
-														+ "FROM (SELECT * FROM links ORDER BY id DESC LIMIT ?) "
-															+ "sub ORDER BY id DESC";
+														+ "FROM (SELECT * FROM links WHERE prvt = 0 ORDER BY id DESC LIMIT ?) "
+														+ "sub ORDER BY id DESC";
 
 	public static boolean isOriginalLinkInDB (String original){
 
@@ -130,7 +130,8 @@ public class LinkDAO {
 			prepared_stmt = con.prepareStatement(addLink);
 			prepared_stmt.setString(1, link.getOriginalLink());
 			prepared_stmt.setString(2, link.getShortLink());
-
+			prepared_stmt.setByte(3, link.getIsPrivate());
+			
 			prepared_stmt.executeUpdate();	
 
 			prepared_stmt.close();
