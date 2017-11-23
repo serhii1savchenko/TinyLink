@@ -8,6 +8,7 @@
 
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TinyLink</title>
 <meta name="description" content="TinyLink is a simple and quick URL shortener" />
@@ -29,7 +30,7 @@
 </head>
 <body>
 	<center>
-		<a href="" id="home"><img src = "${pageContext.request.contextPath}/resources/images/topImage.png" style="padding: 20px;"/></a>
+		<a href="" id="home"><img src = "${pageContext.request.contextPath}/resources/images/topImage.png" style="padding: 20px; max-width: 100%; height: auto;"/></a>
 		<script type="text/javascript">
 			document.getElementById("home").href = domainURL;
 		</script>
