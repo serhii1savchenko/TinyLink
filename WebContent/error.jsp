@@ -2,7 +2,7 @@
 	
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<div class="wrapper">

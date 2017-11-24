@@ -30,7 +30,7 @@
 </head>
 <body>
 	<center>
-		<a href="" id="home"><img src = "${pageContext.request.contextPath}/resources/images/topImage.png" style="padding: 20px; max-width: 100%; height: auto;"/></a>
+		<a href="" id="home"><img src = "${pageContext.request.contextPath}/resources/images/topImage.png" style="padding-top: 15px; padding-bottom: 15px; max-width: 100%; height: auto;"/></a>
 		<script type="text/javascript">
 			document.getElementById("home").href = domainURL;
 		</script>
