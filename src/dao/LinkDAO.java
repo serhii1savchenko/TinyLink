@@ -10,8 +10,8 @@ import model.Link;
 
 public class LinkDAO {
 
-	private static final String getByOriginalLink 		= "SELECT * FROM links WHERE original = ?";
-	private static final String getByShortLink 			= "SELECT * FROM links WHERE short = ?";
+	private static final String getByOriginalLink 		= "SELECT * FROM links WHERE original = ? LIMIT 1";
+	private static final String getByShortLink 			= "SELECT * FROM links WHERE short = ? LIMIT 1";
 	private static final String addLink 				= "INSERT INTO links (original, short, prvt) VALUES (?, ?, ?)";
 	private static final String getLastN 				= "SELECT * "
 														+ "FROM (SELECT * FROM links WHERE prvt = 0 ORDER BY id DESC LIMIT ?) "
