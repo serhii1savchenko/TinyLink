@@ -11,6 +11,7 @@
 						<p>TinyLink is a fast and simple URL shortener</p>
 						<p>It allows to turn awful large links into pretty short ones</p>
 						<form action="short" method="post">
+							Any links to scum materials will be blocked. <br/>
     						Enter your link (starting from http(s)://...) <br/>
     						<input type="text" class="form-control" name="link" placeholder="https://google.com/...">
     						<div style="padding-top: 5px;"><div class="checkbox"><label><input type="checkbox" value="" name="isPrivate" checked>Don't display my link in the list below</label></div></div>

@@ -40,7 +40,7 @@ public class ShortServlet extends HttpServlet {
 		}
 		
 		
-		if ((con != null)&&!(original.isEmpty())){
+		if ((con != null) && !(original.isEmpty()) && original.matches("^(https?|ftp|file)://[-à-ÿ-À-ß-a-z-A-Z0-9+&@#/%?=~_|!:,.;]*[-à-ÿ-À-ß-a-z-A-Z0-9+&@#/%=~_|]")){
 			try { con.close(); } catch (SQLException e) { e.printStackTrace(); }
 			
 			if(dao.LinkDAO.isOriginalLinkInDB(original)){
@@ -65,7 +65,7 @@ public class ShortServlet extends HttpServlet {
 				}
 			}
 		}else{
-			request.setAttribute("message", "DB connection error occurred or you have entered an empty string...");
+			request.setAttribute("message", "DB connection error occurred or you have entered wrong path...");
 			getServletContext().getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
